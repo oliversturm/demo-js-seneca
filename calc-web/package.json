@@ -1,0 +1,25 @@
+{
+  "name": "calc-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
+    "seneca": "^3.4.2",
+    "seneca-web": "^2.1.0",
+    "seneca-web-adapter-express": "^1.0.2",
+    "wait-on": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

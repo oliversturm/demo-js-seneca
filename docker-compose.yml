@@ -1,0 +1,17 @@
+version: '2'
+services:
+  calculator:
+    build: ./calculator
+    volumes:
+      - ./calculator:/usr/app
+    ports:
+      - "3000:3000"
+  calc-web:
+    build: ./calc-web
+    volumes:
+      - ./calc-web:/usr/app
+    ports:
+      - "8080:8080"
+    links:
+      - calculator
+      

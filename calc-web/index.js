@@ -7,7 +7,7 @@ const express = require('express')();
 
 waitOn(
   {
-    resources: ['tcp:localhost:3000']
+    resources: ['tcp:calculator:3000']
   },
   waitErr => {
     if (waitErr) {
@@ -60,7 +60,7 @@ waitOn(
       })
       .client({
         type: 'tcp',
-        host: 'localhost',
+        host: 'calculator',
         port: 3000,
         pin: 'role: calc'
       })

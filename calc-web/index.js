@@ -1,6 +1,4 @@
 const waitOn = require('wait-on');
-const cors = require('cors');
-const web = require('seneca-web');
 
 const seneca = require('seneca')();
 const express = require('express')();
@@ -65,7 +63,7 @@ waitOn(
         //port: 3000,
         pin: 'role: calc'
       })
-      .use(web, config)
+      .use('seneca-web', config)
       .ready(() => {
         const server = seneca.export('web/context')();
         server.listen(8080, () => {

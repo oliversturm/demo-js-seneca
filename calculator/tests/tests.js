@@ -5,7 +5,7 @@ function test(done) {
   return Seneca({
     log: 'test'
   })
-    .test(done /* 'print' */)
+    .test(done /*, 'print' */)
     .use('../calculator');
 }
 

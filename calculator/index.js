@@ -19,7 +19,6 @@ waitOn(
       .listen({
         type: 'amqp',
         host: 'rabbitmq',
-        //port: 3000,
         pin: 'role:calc'
       })
       .ready(() => {

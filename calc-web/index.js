@@ -60,7 +60,6 @@ waitOn(
       .client({
         type: 'amqp',
         host: 'rabbitmq',
-        //port: 3000,
         pin: 'role: calc'
       })
       .use('seneca-web', config)

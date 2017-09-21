@@ -1,14 +1,29 @@
+const waitOn = require('wait-on');
 const seneca = require('seneca')({
   log: 'silent'
 });
 
-seneca
-  .use('./calculator')
-  .listen({
-    type: 'tcp',
-    port: 3000,
-    pin: 'role:calc'
-  })
-  .ready(() => {
-    console.log('Calculator ready');
-  });
+waitOn(
+  {
+    resources: ['tcp:rabbitmq:5672']
+  },
+  waitErr => {
+    if (waitErr) {
+      console.error('Error waiting for resources: ', waitErr);
+      return;
+    }
+
+    seneca
+      .use('seneca-amqp-transport')
+      .use('./calculator')
+      .listen({
+        type: 'amqp',
+        host: 'rabbitmq',
+        //port: 3000,
+        pin: 'role:calc'
+      })
+      .ready(() => {
+        console.log('Calculator ready');
+      });
+  }
+);

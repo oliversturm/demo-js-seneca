@@ -7,7 +7,7 @@ const express = require('express')();
 
 waitOn(
   {
-    resources: ['tcp:calculator:3000']
+    resources: ['tcp:rabbitmq:5672']
   },
   waitErr => {
     if (waitErr) {
@@ -48,6 +48,7 @@ waitOn(
     };
 
     seneca
+      .use('seneca-amqp-transport')
       .add('role:proxy', function(m, r) {
         this.act(
           {
@@ -59,9 +60,9 @@ waitOn(
         );
       })
       .client({
-        type: 'tcp',
-        host: 'calculator',
-        port: 3000,
+        type: 'amqp',
+        host: 'rabbitmq',
+        //port: 3000,
         pin: 'role: calc'
       })
       .use(web, config)

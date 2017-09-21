@@ -4,8 +4,9 @@ services:
     build: ./calculator
     volumes:
       - ./calculator:/usr/app
-    ports:
-      - "3000:3000"
+    links:
+      - rabbitmq
+      
   calc-web:
     build: ./calc-web
     volumes:
@@ -13,5 +14,9 @@ services:
     ports:
       - "8080:8080"
     links:
-      - calculator
+      - rabbitmq
       
+  rabbitmq:
+    image: rabbitmq:alpine
+    ports:
+      - "5672:5672"

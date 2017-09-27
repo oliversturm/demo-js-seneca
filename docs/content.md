@@ -43,6 +43,9 @@
 * Demo code:
   * https://github.com/oliversturm/demo-js-seneca 
 
+* Talk to Seneca
+  * https://github.com/oliversturm/talk-to-seneca
+  
 ---
 
 ## Thank You
